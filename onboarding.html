@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boshlash — Unify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/onboarding.css" />
+</head>
+<body class="onboarding-body">
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <a href="index.html" class="onboard-back">← Orqaga</a>
+
+  <div class="onboard-wrap">
+    <div class="onboard-card glass">
+      <div class="onboard-progress">
+        <div class="onboard-progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="onboard-step-indicator">
+        <span id="step-label">1-qadam / 4</span>
+      </div>
+
+      <div class="onboard-step active" data-step="1">
+        <h1>Tanishamiz 👋</h1>
+        <p class="onboard-sub">Unify'ga xush kelibsiz. Ismingiz va sinfingizni ayting.</p>
+
+        <label class="field">
+          <span class="field-label">Ismingiz</span>
+          <input type="text" id="in-name" placeholder="Masalan: Aziza" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Sinf / kurs</span>
+          <select id="in-grade">
+            <option value="">Tanlang</option>
+            <option>9-sinf</option>
+            <option>10-sinf</option>
+            <option>11-sinf</option>
+            <option>Bitiruvchi</option>
+            <option>1-kurs</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="onboard-step" data-step="2">
+        <h1>Maqsadingiz qayer? 🌍</h1>
+        <p class="onboard-sub">Qaysi davlat va universitetga topshirmoqchisiz?</p>
+
+        <label class="field">
+          <span class="field-label">Davlat</span>
+          <select id="in-country">
+            <option>Janubiy Koreya</option>
+            <option>AQSh</option>
+            <option>Buyuk Britaniya</option>
+            <option>Germaniya</option>
+            <option>Turkiya</option>
+            <option>Yaponiya</option>
+            <option>Kanada</option>
+            <option>Boshqa</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Universitet (yoki "hali aniqlamadim")</span>
+          <input type="text" id="in-university" placeholder="Masalan: KAIST" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Mutaxassislik</span>
+          <input type="text" id="in-major" placeholder="Masalan: Computer Science" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Qabul muddati (deadline)</span>
+          <input type="date" id="in-deadline" />
+        </label>
+      </div>
+
+      <div class="onboard-step" data-step="3">
+        <h1>Hozirgi daraja 📊</h1>
+        <p class="onboard-sub">Bu ma'lumotlar reja tuzish uchun kerak. Hech kimga ko'rinmaydi.</p>
+
+        <label class="field">
+          <span class="field-label">IELTS / English daraja</span>
+          <input type="number" id="in-ielts" min="0" max="9" step="0.5" value="6.0" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">SAT (agar topshirgan bo'lsangiz)</span>
+          <input type="number" id="in-sat" min="400" max="1600" step="10" value="1200" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">GPA (5 balli tizim)</span>
+          <input type="number" id="in-gpa" min="0" max="5" step="0.1" value="4.5" />
+        </label>
+      </div>
+
+      <div class="onboard-step" data-step="4">
+        <h1>Maqsadlar 🎯</h1>
+        <p class="onboard-sub">Qanday natijaga erishmoqchisiz?</p>
+
+        <label class="field">
+          <span class="field-label">IELTS maqsad</span>
+          <input type="number" id="in-ielts-target" min="0" max="9" step="0.5" value="7.5" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">SAT maqsad</span>
+          <input type="number" id="in-sat-target" min="400" max="1600" step="10" value="1450" />
+        </label>
+
+        <div class="onboard-info glass">
+          <strong>💡 Nima bo'ladi?</strong>
+          <p>Unify sizga muddatgacha bo'lgan <b>4 bosqichli yo'l xaritasi</b>, kunlik vazifalar va portfolio seyfini yaratadi.</p>
+        </div>
+      </div>
+
+      <div class="onboard-actions">
+        <button class="btn btn-ghost" id="btn-back" disabled>← Orqaga</button>
+        <button class="btn btn-primary" id="btn-next">Davom etish →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/onboarding.js"></script>
+</body>
+</html>

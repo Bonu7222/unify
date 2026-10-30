@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Unify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="app">
+    <aside class="sidebar glass">
+      <a href="index.html" class="logo sidebar-logo">
+        <span class="logo-mark">U</span>
+        <span class="logo-text">Unify</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="overview">
+          <i data-lucide="home"></i><span>Umumiy</span>
+        </button>
+        <button class="nav-item" data-view="roadmap">
+          <i data-lucide="map"></i><span>Yo'l xaritasi</span>
+        </button>
+        <button class="nav-item" data-view="tasks">
+          <i data-lucide="check-square"></i><span>Kunlik reja</span>
+        </button>
+        <button class="nav-item" data-view="portfolio">
+          <i data-lucide="folder"></i><span>Portfolio</span>
+        </button>
+        <button class="nav-item" data-view="practice">
+          <i data-lucide="book-open"></i><span>Mashqlar</span>
+        </button>
+        <button class="nav-item" data-view="ai">
+          <i data-lucide="message-circle"></i><span>AI yordamchi</span>
+        </button>
+        <button class="nav-item" data-view="profile">
+          <i data-lucide="user"></i><span>Profil</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="streak-pill glass">
+          <span>🔥</span>
+          <div>
+            <strong id="sidebar-streak">0</strong>
+            <small>kunlik streak</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar glass">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn">
+            <i data-lucide="menu"></i>
+          </button>
+          <div>
+            <h2 id="topbar-title">Umumiy</h2>
+            <p id="topbar-sub">Bugun nima muhim</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="countdown-pill glass">
+            <i data-lucide="clock"></i>
+            <span><b id="topbar-countdown">0</b> kun qoldi</span>
+          </div>
+          <div class="avatar" id="topbar-avatar">A</div>
+        </div>
+      </header>
+
+      <div class="views">
+        <section class="view active" id="view-overview">
+          <div class="welcome-card glass">
+            <div>
+              <p class="welcome-greeting" id="welcome-greeting">Xayrli kun</p>
+              <h1 class="welcome-name" id="welcome-name">Do'stim</h1>
+              <p class="welcome-sub" id="welcome-sub">Bugun kichik qadam — ertaga katta natija.</p>
+            </div>
+            <div class="welcome-goal">
+              <span class="badge-pill"><span class="dot"></span>Faol maqsad</span>
+              <div class="welcome-goal-title" id="welcome-goal">—</div>
+              <div class="welcome-goal-meta" id="welcome-goal-meta">—</div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card glass">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-value" id="stat-countdown">—</div>
+              <div class="stat-label">kun qoldi</div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">🔥</div>
+              <div class="stat-value" id="stat-streak">—</div>
+              <div class="stat-label">kunlik streak</div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">✅</div>
+              <div class="stat-value" id="stat-tasks">—</div>
+              <div class="stat-label">vazifa bajarilgan</div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">📁</div>
+              <div class="stat-value" id="stat-portfolio">—</div>
+              <div class="stat-label">portfolioda</div>
+            </div>
+          </div>
+
+          <div class="overview-grid">
+            <div class="panel glass">
+              <div class="panel-head">
+                <h3>Bugungi vazifalar</h3>
+                <button class="btn btn-ghost btn-sm" id="go-tasks">Barchasi →</button>
+              </div>
+              <div id="overview-tasks"></div>
+            </div>
+
+            <div class="panel glass">
+              <div class="panel-head">
+                <h3>Progress</h3>
+              </div>
+              <div class="progress-ring-wrap">
+                <svg class="progress-ring" viewBox="0 0 120 120">
+                  <circle class="ring-bg" cx="60" cy="60" r="52" />
+                  <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
+                </svg>
+                <div class="progress-ring-label">
+                  <strong id="progress-percent">0%</strong>
+                  <small>tayyor</small>
+                </div>
+              </div>
+              <div class="progress-detail" id="progress-detail"></div>
+            </div>
+          </div>
+
+          <div class="panel glass">
+            <div class="panel-head">
+              <h3>Keyingi bosqich</h3>
+              <button class="btn btn-ghost btn-sm" id="go-roadmap">Yo'l xaritasi →</button>
+            </div>
+            <div id="next-phase"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-roadmap">
+          <div class="section-head-dash">
+            <h1>Yo'l xaritasi</h1>
+            <p>Maqsadingizga 4 bosqichda yetib boramiz.</p>
+          </div>
+          <div id="roadmap-list" class="roadmap-list"></div>
+        </section>
+
+        <section class="view" id="view-tasks">
+          <div class="section-head-dash">
+            <h1>Kunlik reja</h1>
+            <p>Kichik qadamlar — katta natijalar.</p>
+          </div>
+
+          <div class="panel glass">
+            <form class="add-task-form" id="add-task-form">
+              <input type="text" id="new-task-title" placeholder="Yangi vazifa..." required />
+              <select id="new-task-cat">
+                <option>Umumiy</option>
+                <option>IELTS</option>
+                <option>SAT</option>
+                <option>Portfolio</option>
+              </select>
+              <button type="submit" class="btn btn-primary btn-sm">Qo'shish</button>
+            </form>
+          </div>
+
+          <div class="panel glass">
+            <div class="panel-head">
+              <h3>Bugun — <span id="tasks-date"></span></h3>
+              <span class="badge" id="tasks-count">0 / 0</span>
+            </div>
+            <div id="tasks-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-portfolio">
+          <div class="section-head-dash">
+            <div>
+              <h1>Portfolio seyfi</h1>
+              <p>Sertifikat, loyiha, yutuqlaringiz — bitta joyda.</p>
+            </div>
+            <button class="btn btn-primary" id="btn-add-portfolio">+ Qo'shish</button>
+          </div>
+
+          <div class="portfolio-tabs" id="portfolio-tabs">
+            <button class="tab active" data-cat="all">Barchasi</button>
+            <button class="tab" data-cat="academic">🎓 Akademik</button>
+            <button class="tab" data-cat="creative">🎨 Ijodiy</button>
+            <button class="tab" data-cat="leadership">👑 Liderlik</button>
+            <button class="tab" data-cat="community">🤝 Jamoat</button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolio-grid"></div>
+        </section>
+
+        <section class="view" id="view-practice">
+          <div class="section-head-dash">
+            <h1>Mashqlar</h1>
+            <p>IELTS va SAT bo'yicha kunlik mashqlar.</p>
+          </div>
+
+          <div class="practice-group">
+            <h3 class="practice-group-title">📘 IELTS</h3>
+            <div class="practice-grid">
+              <div class="practice-card glass">
+                <div class="practice-icon">📖</div>
+                <h4>Reading</h4>
+                <p>1 passage / kun</p>
+                <div class="mini-bar"><div style="width:65%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+              <div class="practice-card glass">
+                <div class="practice-icon">🎧</div>
+                <h4>Listening</h4>
+                <p>1 section / kun</p>
+                <div class="mini-bar"><div style="width:40%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+              <div class="practice-card glass">
+                <div class="practice-icon">✍️</div>
+                <h4>Writing</h4>
+                <p>Haftada 2 ta essay</p>
+                <div class="mini-bar"><div style="width:25%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+              <div class="practice-card glass">
+                <div class="practice-icon">🗣️</div>
+                <h4>Speaking</h4>
+                <p>Kuniga 10 daqiqa</p>
+                <div class="mini-bar"><div style="width:50%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="practice-group">
+            <h3 class="practice-group-title">📗 SAT</h3>
+            <div class="practice-grid">
+              <div class="practice-card glass">
+                <div class="practice-icon">🔢</div>
+                <h4>Math</h4>
+                <p>10 ta masala / kun</p>
+                <div class="mini-bar"><div style="width:55%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+              <div class="practice-card glass">
+                <div class="practice-icon">📖</div>
+                <h4>Reading</h4>
+                <p>1 passage / kun</p>
+                <div class="mini-bar"><div style="width:30%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+              <div class="practice-card glass">
+                <div class="practice-icon">✏️</div>
+                <h4>Writing</h4>
+                <p>Grammatika mashqi</p>
+                <div class="mini-bar"><div style="width:20%"></div></div>
+                <button class="btn btn-ghost btn-sm">Boshlash</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-ai">
+          <div class="section-head-dash">
+            <h1>AI yordamchi</h1>
+            <p>Qabul, IELTS, SAT yoki portfolio haqida so'rang.</p>
+          </div>
+
+          <div class="chat-wrap glass">
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-suggestions" id="chat-suggestions">
+              <button class="suggestion">Nimadan boshlashim kerak?</button>
+              <button class="suggestion">IELTS maslahat</button>
+              <button class="suggestion">Portfolio qanday yig'aman?</button>
+              <button class="suggestion">Qabulga tayyorgarlik</button>
+            </div>
+            <form class="chat-input" id="chat-form">
+              <input type="text" id="chat-input" placeholder="Xabar yozing..." autocomplete="off" />
+              <button type="submit" class="btn btn-primary btn-sm">Yuborish</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="view-profile">
+          <div class="section-head-dash">
+            <h1>Profil</h1>
+            <p>Ma'lumotlaringiz va sozlamalar.</p>
+          </div>
+
+          <div class="profile-grid">
+            <div class="panel glass">
+              <h3>Shaxsiy</h3>
+              <label class="field"><span class="field-label">Ism</span><input type="text" id="p-name" /></label>
+              <label class="field"><span class="field-label">Sinf</span><input type="text" id="p-grade" /></label>
+            </div>
+            <div class="panel glass">
+              <h3>Maqsad</h3>
+              <label class="field"><span class="field-label">Davlat</span><input type="text" id="p-country" /></label>
+              <label class="field"><span class="field-label">Universitet</span><input type="text" id="p-university" /></label>
+              <label class="field"><span class="field-label">Mutaxassislik</span><input type="text" id="p-major" /></label>
+              <label class="field"><span class="field-label">Deadline</span><input type="date" id="p-deadline" /></label>
+            </div>
+            <div class="panel glass">
+              <h3>Daraja</h3>
+              <label class="field"><span class="field-label">IELTS</span><input type="number" id="p-ielts" step="0.5" min="0" max="9" /></label>
+              <label class="field"><span class="field-label">SAT</span><input type="number" id="p-sat" step="10" /></label>
+              <label class="field"><span class="field-label">GPA</span><input type="number" id="p-gpa" step="0.1" /></label>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn btn-primary" id="btn-save-profile">Saqlash</button>
+            <button class="btn btn-danger" id="btn-reset">Barcha ma'lumotlarni o'chirish</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="portfolio-modal">
+    <div class="modal glass">
+      <h3>Portfolioga qo'shish</h3>
+      <form id="portfolio-form">
+        <label class="field"><span class="field-label">Nomi</span><input type="text" id="pf-title" required /></label>
+        <label class="field">
+          <span class="field-label">Kategoriya</span>
+          <select id="pf-category">
+            <option value="academic">🎓 Akademik</option>
+            <option value="creative">🎨 Ijodiy</option>
+            <option value="leadership">👑 Liderlik</option>
+            <option value="community">🤝 Jamoat</option>
+          </select>
+        </label>
+        <label class="field"><span class="field-label">Sana</span><input type="date" id="pf-date" /></label>
+        <label class="field"><span class="field-label">Tavsif</span><textarea id="pf-desc" rows="3"></textarea></label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="pf-cancel">Bekor</button>
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
